@@ -1,0 +1,90 @@
+package com.lamichhane.portfolio.entity;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="project_image")
+public class ProjectImages {
+	
+//	https://www.techgeeknext.com/spring-boot/spring-boot-upload-image
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_image_id_seq")
+	@SequenceGenerator(name = "project_image_id_seq", 
+	                   sequenceName = "project_img_seq",
+	                   allocationSize = 1) 
+	@Column(name="project_img_id")
+	private int project_img_id;
+	
+	@Column(name="imageurl")
+	private String imageurl;
+	
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+			CascadeType.DETACH,CascadeType.REFRESH})
+	@JoinColumn(name="project_id")
+	private Project project;
+	
+
+
+
+
+
+	public int getId() {
+		return project_img_id;
+	}
+
+
+	public int getProject_img_id() {
+		return project_img_id;
+	}
+
+
+	public void setProject_img_id(int project_img_id) {
+		this.project_img_id = project_img_id;
+	}
+
+
+	public String getImageurl() {
+		return imageurl;
+	}
+
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
+
+
+	public Project getProject() {
+		return project;
+	}
+
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	
+	
+
+	
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+}
