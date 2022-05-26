@@ -20,22 +20,12 @@ public class Awards {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="icon")
-	private String icon;
-	
 	@Column(name="heading")
 	private String heading;
 	
 	@Column(name="description")
 	private String description;
 
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
 
 	public String getHeading() {
 		return heading;

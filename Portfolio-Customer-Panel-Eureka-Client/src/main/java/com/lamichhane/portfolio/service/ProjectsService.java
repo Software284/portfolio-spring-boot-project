@@ -3,7 +3,6 @@ package com.lamichhane.portfolio.service;
 import java.util.List;
 
 import com.lamichhane.portfolio.entity.Project;
-import com.lamichhane.portfolio.entity.ProjectImages;
 import com.lamichhane.portfolio.modal.ProjectInformation;
 
 public interface ProjectsService {

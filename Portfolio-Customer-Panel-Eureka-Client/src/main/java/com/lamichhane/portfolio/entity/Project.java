@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Table(name="project")
 public class Project {
 	
-//	https://www.techgeeknext.com/spring-boot/spring-boot-upload-image
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_id_seq")
@@ -27,89 +26,44 @@ public class Project {
 	@Column(name="project_id")
 	private int project_id;
 	
-	@OneToMany(mappedBy="project",cascade = {CascadeType.PERSIST,CascadeType.MERGE,
-			CascadeType.DETACH,CascadeType.REFRESH})
-    private List<ProjectImages> projectimages;
-	
-	
-
-	@Column(name = "title")
-	private String  title;
-	
-	
+	@Column(name="image_address")
+	private String image_address;
 	
 	@Column(name="description")
 	private String description;
 	
-	
-	
-	
+	@Column(name = "title")
+	private String  title;
 
-
-
-	public int getProject_id() {
-		return project_id;
+	public String getImage_address() {
+		return image_address;
 	}
 
-
-	public void setProject_id(int project_id) {
-		this.project_id = project_id;
+	public void setImage_address(String image_address) {
+		this.image_address = image_address;
 	}
-
-
-	public List<ProjectImages> getProjectimages() {
-		return projectimages;
-	}
-
-
-	public void setProjectimages(List<ProjectImages> projectimages) {
-		this.projectimages = projectimages;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	public String getTitle() {
+		return title;
+	}
 
-	public int getId() {
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getProject_id() {
 		return project_id;
 	}
 	
-	public void add(ProjectImages imagesUrl) {
-		if(projectimages == null) {
-			projectimages = new ArrayList<>();
-		}
-		projectimages.add(imagesUrl);
-		imagesUrl.setProject(this);
-	}
-
-
-	
-	
-	
-	
 	
 
 
-	
-	
-	
-	
-	
 }

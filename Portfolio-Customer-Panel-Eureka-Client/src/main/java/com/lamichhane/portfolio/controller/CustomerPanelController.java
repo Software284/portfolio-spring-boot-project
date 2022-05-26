@@ -20,7 +20,6 @@ import com.lamichhane.portfolio.entity.ContactMedium;
 import com.lamichhane.portfolio.entity.CreativeProcess;
 import com.lamichhane.portfolio.entity.KnowldgeResume;
 import com.lamichhane.portfolio.entity.Project;
-import com.lamichhane.portfolio.entity.ProjectImages;
 import com.lamichhane.portfolio.entity.SkillProgressBar;
 import com.lamichhane.portfolio.entity.Specialize;
 import com.lamichhane.portfolio.entity.Stats;

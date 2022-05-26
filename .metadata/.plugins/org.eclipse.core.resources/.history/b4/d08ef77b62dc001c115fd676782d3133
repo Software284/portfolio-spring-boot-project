@@ -1,0 +1,76 @@
+package com.lamichhane.portfolio.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.lamichhane.portfolio.dao.ProjectsDAO;
+import com.lamichhane.portfolio.entity.Project;
+import com.lamichhane.portfolio.entity.ProjectImages;
+import com.lamichhane.portfolio.exception.classes.ProjectsNotFoundException;
+import com.lamichhane.portfolio.modal.ProjectInformation;
+
+@Service
+public class ProjectsServiceImpl implements ProjectsService{
+	
+	@Autowired
+	private ProjectsDAO projectsDAO;
+	
+
+	
+	@Override
+	@Transactional
+	public List<Project> getAllProjects() {
+		
+		return projectsDAO.findAll();
+	}
+
+	@Override
+	@Transactional
+	public void saveProjects(ProjectInformation theProjects) {
+		
+		if(theProjects.getId() != 0 && theProjects.getId() > 0) {
+			Project project = new Project();
+			project.setTitle(theProjects.getTitle());
+			project.setDescription(theProjects.getDescription());
+			project.setProject_id(theProjects.getId());
+			projectsDAO.save(project);
+		}
+		else {
+			Project project = new Project();
+			project.setTitle(theProjects.getTitle());
+			project.setDescription(theProjects.getDescription());
+			project.setProject_id(theProjects.getId());
+			List<String> imageurl = theProjects.getImageurl();
+			
+		    for(String s : imageurl) {
+		    	ProjectImages i = new ProjectImages();
+		    	i.setImageurl(s);
+		    }
+		    
+		    projectsDAO.save(project);
+		}
+		
+	}
+
+	@Override
+	@Transactional
+	public Project getProjects(int theId) {
+		Optional<Project> projects = projectsDAO.findById(theId);
+		if(projects.isEmpty()) {
+			throw new ProjectsNotFoundException("Project Not Found With Id-"+theId);
+		}
+		return projects.get();
+		
+	}
+
+	@Override
+	@Transactional
+	public void deleteProjects(int id) {
+		projectsDAO.deleteById(id);
+	}
+	
+}

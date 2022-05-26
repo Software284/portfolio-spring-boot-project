@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lamichhane.portfolio.dao.ProjectsDAO;
 import com.lamichhane.portfolio.entity.Project;
-import com.lamichhane.portfolio.entity.ProjectImages;
 import com.lamichhane.portfolio.exception.classes.ProjectsNotFoundException;
 import com.lamichhane.portfolio.modal.ProjectInformation;
 
@@ -31,29 +30,6 @@ public class ProjectsServiceImpl implements ProjectsService{
 	@Override
 	@Transactional
 	public void saveProjects(ProjectInformation theProjects) {
-		
-		if(theProjects.getId() != 0 && theProjects.getId() > 0) {
-			Project project = new Project();
-			project.setTitle(theProjects.getTitle());
-			project.setDescription(theProjects.getDescription());
-			project.setProject_id(theProjects.getId());
-			projectsDAO.save(project);
-		}
-		else {
-			Project project = new Project();
-			project.setTitle(theProjects.getTitle());
-			project.setDescription(theProjects.getDescription());
-			project.setProject_id(theProjects.getId());
-			List<String> imageurl = theProjects.getImageurl();
-			
-		    for(String s : imageurl) {
-		    	ProjectImages i = new ProjectImages();
-		    	i.setImageurl(s);
-		    	project.add(i);
-		    }
-		    
-		    projectsDAO.save(project);
-		}
 		
 	}
 
