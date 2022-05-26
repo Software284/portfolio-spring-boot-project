@@ -38,7 +38,7 @@ public class BlogContentServiceImpl implements BlogContentService{
 	public BlogContent getBlogContent(int theId) {
 		Optional<BlogContent> blog_content = blogContentDAO.findById(theId);
 		if(blog_content.isEmpty()) {
-			throw new ContactDetailNotFoundException("Contact Detail Not Found With Id-"+theId);
+			throw new ContactDetailNotFoundException("Blog Content Not Found With Id-"+theId);
 		}
 		return blog_content.get();
 		

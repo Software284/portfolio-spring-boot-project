@@ -9,12 +9,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.lamichhane.portfolio.exception.classes.AwardsNotFoundException;
 import com.lamichhane.portfolio.exception.classes.BlogContentNotFoundException;
 import com.lamichhane.portfolio.exception.classes.ContactDetailNotFoundException;
-import com.lamichhane.portfolio.exception.classes.ContactMediumNotFoundException;
-import com.lamichhane.portfolio.exception.classes.CreativeProcessNotFoundException;
 import com.lamichhane.portfolio.exception.classes.KnowldgeResumeNotFoundException;
 import com.lamichhane.portfolio.exception.classes.ProjectsNotFoundException;
 import com.lamichhane.portfolio.exception.classes.SkillProgressBarNotFoundException;
-import com.lamichhane.portfolio.exception.classes.SpecializeNotFoundException;
 import com.lamichhane.portfolio.exception.classes.StandardRestErrorResponse;
 import com.lamichhane.portfolio.exception.classes.StatsNotFoundException;
 import com.lamichhane.portfolio.exception.classes.TestimonialsNotFoundException;
@@ -72,39 +69,9 @@ public class PortfolioExceptionHandler  {
 			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		
-		// Add an exception handler for ContactMediumNotFoundException
 		
-		@ExceptionHandler
-		public ResponseEntity<StandardRestErrorResponse> handleException(ContactMediumNotFoundException exc) {
-			
-			// create CustomerErrorResponse
-			
-			StandardRestErrorResponse error = new StandardRestErrorResponse(
-												HttpStatus.NOT_FOUND.value(),
-												exc.getMessage(),
-												System.currentTimeMillis());
-			
-			// return ResponseEntity
-			
-			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-		}
 		
-		// Add an exception handler for CreativeProcessNotFoundException
-		
-		@ExceptionHandler
-		public ResponseEntity<StandardRestErrorResponse> handleException(CreativeProcessNotFoundException exc) {
-			
-			// create CustomerErrorResponse
-			
-			StandardRestErrorResponse error = new StandardRestErrorResponse(
-												HttpStatus.NOT_FOUND.value(),
-												exc.getMessage(),
-												System.currentTimeMillis());
-			
-			// return ResponseEntity
-			
-			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-		}
+	
 		
 		// Add an exception handler for KnowldgeResumeNotFoundException
 		
@@ -157,22 +124,7 @@ public class PortfolioExceptionHandler  {
 			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
 		
-		// Add an exception handler for SpecializeNotFoundException
 		
-		@ExceptionHandler
-		public ResponseEntity<StandardRestErrorResponse> handleException(SpecializeNotFoundException exc) {
-			
-			// create CustomerErrorResponse
-			
-			StandardRestErrorResponse error = new StandardRestErrorResponse(
-												HttpStatus.NOT_FOUND.value(),
-												exc.getMessage(),
-												System.currentTimeMillis());
-			
-			// return ResponseEntity
-			
-			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-		}
 		
 		// Add an exception handler for StatsNotFoundException
 		

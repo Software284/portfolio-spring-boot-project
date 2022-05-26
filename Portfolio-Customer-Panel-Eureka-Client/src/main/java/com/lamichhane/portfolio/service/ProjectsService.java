@@ -3,13 +3,12 @@ package com.lamichhane.portfolio.service;
 import java.util.List;
 
 import com.lamichhane.portfolio.entity.Project;
-import com.lamichhane.portfolio.modal.ProjectInformation;
 
 public interface ProjectsService {
 
 	public List<Project> getAllProjects();
 	   
-	public void saveProjects(ProjectInformation theProjects);
+	public void saveProjects(Project theProjects);
 
 	public Project getProjects(int id);
 

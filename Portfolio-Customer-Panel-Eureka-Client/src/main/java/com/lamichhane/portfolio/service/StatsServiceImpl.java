@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lamichhane.portfolio.dao.StatsDAO;
 import com.lamichhane.portfolio.entity.Stats;
-import com.lamichhane.portfolio.exception.classes.SpecializeNotFoundException;
+import com.lamichhane.portfolio.exception.classes.StatsNotFoundException;
 
 @Service
 public class StatsServiceImpl implements StatsService{
@@ -38,7 +38,7 @@ public class StatsServiceImpl implements StatsService{
 	public Stats getStats(int theId) {
 		Optional<Stats> sts = statsDAO.findById(theId);
 		if(sts.isEmpty()) {
-			throw new SpecializeNotFoundException("Stats Not Found With Id-"+theId);
+			throw new StatsNotFoundException("Stats Not Found With Id-"+theId);
 		}
 		return sts.get();
 		

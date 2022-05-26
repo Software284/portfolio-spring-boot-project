@@ -16,24 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lamichhane.portfolio.entity.Awards;
 import com.lamichhane.portfolio.entity.BlogContent;
 import com.lamichhane.portfolio.entity.ContactDetail;
-import com.lamichhane.portfolio.entity.ContactMedium;
-import com.lamichhane.portfolio.entity.CreativeProcess;
 import com.lamichhane.portfolio.entity.KnowldgeResume;
 import com.lamichhane.portfolio.entity.Project;
 import com.lamichhane.portfolio.entity.SkillProgressBar;
-import com.lamichhane.portfolio.entity.Specialize;
 import com.lamichhane.portfolio.entity.Stats;
 import com.lamichhane.portfolio.entity.Testimonials;
-import com.lamichhane.portfolio.modal.ProjectInformation;
 import com.lamichhane.portfolio.service.AwardsService;
 import com.lamichhane.portfolio.service.BlogContentService;
 import com.lamichhane.portfolio.service.ContactDetailService;
-import com.lamichhane.portfolio.service.ContactMediumService;
-import com.lamichhane.portfolio.service.CreativeProcessService;
 import com.lamichhane.portfolio.service.KnowldgeResumeService;
 import com.lamichhane.portfolio.service.ProjectsService;
 import com.lamichhane.portfolio.service.SkillProgressBarService;
-import com.lamichhane.portfolio.service.SpecializeService;
 import com.lamichhane.portfolio.service.StatsService;
 import com.lamichhane.portfolio.service.TestimonialsService;
 
@@ -41,14 +34,10 @@ import com.lamichhane.portfolio.service.TestimonialsService;
 @RequestMapping("/portfolio")
 public class CustomerPanelController {
 	
-	@Autowired
-	private SpecializeService specializeService;
 	
 	@Autowired
 	private StatsService statsService;
 	
-	@Autowired
-	private CreativeProcessService creativeProcessService;
 	
 	@Autowired
 	private KnowldgeResumeService knowldgeResumeService;
@@ -56,8 +45,6 @@ public class CustomerPanelController {
 	@Autowired
 	private ContactDetailService contactDetailService;
 	
-	@Autowired
-	private ContactMediumService contactMediumService;
 	
 	@Autowired
 	private SkillProgressBarService skillProgressBarService;
@@ -75,39 +62,7 @@ public class CustomerPanelController {
 	private TestimonialsService testimonialsService;
 	
 	
-	/* Specialize API request processing */
 	
-	@GetMapping("/specialize")
-	public List<Specialize> getAllSpecialize() {
-		return specializeService.getAllSpecialize();
-	}
-	
-	@GetMapping("/specialize/{specializeId}")
-	public Specialize getSpecialize(@PathVariable int specializeId) {
-		Specialize specialize = specializeService.getSpecialize(specializeId);
-		return specialize;
-	}
-	
-	
-	@PostMapping("/specialize")
-	public Specialize saveSpecialize(@RequestBody Specialize spe) {
-		specializeService.saveSpecialize(spe);
-		return spe;
-	}
-	
-	@PutMapping("/specialize")
-	public Specialize updateSpecialize(@RequestBody Specialize spe) {
-		specializeService.saveSpecialize(spe);
-		return spe;
-	}
-	
-	@DeleteMapping("/specialize/{specializeId}")
-	public String deleteSpecialize(@PathVariable int specializeId) {
-		Specialize spe = specializeService.getSpecialize(specializeId);
-		specializeService.deletSpecialize(specializeId);
-		
-		return "Deleted Specialize id is : "+specializeId;
-	}
 	
 	/* Stats API request processing */
 	
@@ -143,39 +98,7 @@ public class CustomerPanelController {
 		return "Deleted Stats id is : "+statsId;
 	}
 	
-	/* Creative Process API request processing */
-	
-	@GetMapping("/creative_process")
-	public List<CreativeProcess> getAllCreativeProcess() {
-		return creativeProcessService.getAllCreativeProcess();
-	}
-	
-	@GetMapping("/creative_process/{creativeprocessId}")
-	public CreativeProcess getCreativeProcess(@PathVariable int creativeprocessId) {
-		CreativeProcess creative_process = creativeProcessService.getCreativeProcess(creativeprocessId);
-		return creative_process;
-	}
-	
-	
-	@PostMapping("/creative_process")
-	public CreativeProcess saveCreativeProcess(@RequestBody CreativeProcess creativeprocess) {
-		creativeProcessService.saveCreativeProcess(creativeprocess);
-		return creativeprocess;
-	}
-	
-	@PutMapping("/creative_process")
-	public CreativeProcess updateCreativeProcess(@RequestBody CreativeProcess creativeprocess) {
-		creativeProcessService.saveCreativeProcess(creativeprocess);
-		return creativeprocess;
-	}
-	
-	@DeleteMapping("/creative_process/{creativeprocessId}")
-	public String deleteCreativeProcess(@PathVariable int creativeprocessId) {
-		CreativeProcess creativeprocess = creativeProcessService.getCreativeProcess(creativeprocessId);
-		creativeProcessService.deleteCreativeProcess(creativeprocessId);
-		
-		return "Deleted Creative Process id is : "+creativeprocessId;
-	}
+
 	
 	/* Knowldge Resume API request processing */
 	
@@ -245,39 +168,7 @@ public class CustomerPanelController {
 		return "Deleted Knowldge Resume id is : "+contactdetailId;
 	}
 	
-	/* ContactMedium API request processing */
 	
-	@GetMapping("/contact_medium")
-	public List<ContactMedium> getAllContactMedium() {
-		return contactMediumService.getAllContactMedium();
-	}
-	
-	@GetMapping("/contact_medium/{contactmediumId}")
-	public ContactMedium getContactMedium(@PathVariable int contactmediumId) {
-		ContactMedium contact_medium = contactMediumService.getContactMedium(contactmediumId);
-		return contact_medium;
-	}
-	
-	
-	@PostMapping("/contact_medium")
-	public ContactMedium saveContactMedium(@RequestBody ContactMedium contactmedium) {
-		contactMediumService.saveContactMedium(contactmedium);
-		return contactmedium;
-	}
-	
-	@PutMapping("/contact_medium")
-	public ContactMedium updateContactMedium(@RequestBody ContactMedium contactmedium) {
-		contactMediumService.saveContactMedium(contactmedium);
-		return contactmedium;
-	}
-	
-	@DeleteMapping("/contact_medium/{contactmediumId}")
-	public String deleteContactMedium(@PathVariable int contactmediumId) {
-		ContactMedium contact_medium = contactMediumService.getContactMedium(contactmediumId);
-		contactMediumService.deleteContactMedium(contactmediumId);
-		
-		return "Deleted contact detail id is : "+contactmediumId;
-	}
 	
 	/* SkillProgressBar API request processing */
 	
@@ -432,13 +323,13 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/projects")
-	public ProjectInformation saveProjects(@RequestBody ProjectInformation projects) throws IOException {
+	public Project saveProjects(@RequestBody Project projects) throws IOException {
 		projectsService.saveProjects(projects);
 		return projects;
 	}
 	
 	@PutMapping("/projects")
-	public ProjectInformation updateProjects(@RequestBody ProjectInformation projects) {
+	public Project updateProjects(@RequestBody Project projects) {
 		projectsService.saveProjects(projects);
 		return projects;
 	}

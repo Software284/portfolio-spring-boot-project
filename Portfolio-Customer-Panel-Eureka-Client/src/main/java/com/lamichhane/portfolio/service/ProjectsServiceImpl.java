@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lamichhane.portfolio.dao.ProjectsDAO;
 import com.lamichhane.portfolio.entity.Project;
 import com.lamichhane.portfolio.exception.classes.ProjectsNotFoundException;
-import com.lamichhane.portfolio.modal.ProjectInformation;
+
 
 @Service
 public class ProjectsServiceImpl implements ProjectsService{
@@ -29,7 +29,7 @@ public class ProjectsServiceImpl implements ProjectsService{
 
 	@Override
 	@Transactional
-	public void saveProjects(ProjectInformation theProjects) {
+	public void saveProjects(Project theProjects) {
 		
 	}
 
