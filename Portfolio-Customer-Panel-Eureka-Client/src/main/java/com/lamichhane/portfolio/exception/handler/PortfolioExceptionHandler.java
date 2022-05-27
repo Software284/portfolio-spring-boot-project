@@ -4,12 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.lamichhane.portfolio.exception.classes.AwardsNotFoundException;
 import com.lamichhane.portfolio.exception.classes.BlogContentNotFoundException;
 import com.lamichhane.portfolio.exception.classes.ContactDetailNotFoundException;
 import com.lamichhane.portfolio.exception.classes.KnowldgeResumeNotFoundException;
+import com.lamichhane.portfolio.exception.classes.PartnersNotFoundException;
 import com.lamichhane.portfolio.exception.classes.ProjectsNotFoundException;
 import com.lamichhane.portfolio.exception.classes.SkillProgressBarNotFoundException;
 import com.lamichhane.portfolio.exception.classes.StandardRestErrorResponse;
@@ -159,6 +159,23 @@ public class PortfolioExceptionHandler  {
 			
 			return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 		}
+		
+		// Add an exception handler for PartnersNotFoundException
+		
+				@ExceptionHandler
+				public ResponseEntity<StandardRestErrorResponse> handleException(PartnersNotFoundException exc) {
+					
+					// create CustomerErrorResponse
+					
+					StandardRestErrorResponse error = new StandardRestErrorResponse(
+														HttpStatus.NOT_FOUND.value(),
+														exc.getMessage(),
+														System.currentTimeMillis());
+					
+					// return ResponseEntity
+					
+					return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+				}
 		
 		
 		// Add another exception handler ... to catch any exception (catch all)

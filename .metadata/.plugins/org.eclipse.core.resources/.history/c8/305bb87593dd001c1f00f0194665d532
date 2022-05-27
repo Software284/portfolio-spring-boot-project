@@ -1,0 +1,8 @@
+package com.lamichhane.portfolio.entity;
+
+public class Partners {
+	
+	private int id;
+	private String image_url;
+
+}

@@ -1,4 +1,4 @@
-package com.lamichhane.portfolio.entity;
+	package com.lamichhane.portfolio.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

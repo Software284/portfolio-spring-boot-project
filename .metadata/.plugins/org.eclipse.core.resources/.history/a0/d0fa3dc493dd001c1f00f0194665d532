@@ -1,0 +1,24 @@
+package com.lamichhane.portfolio.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Table(name="partners")
+@Entity
+public class Partners {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "award_id_seq")
+	@SequenceGenerator(name = "award_id_seq", 
+	                   sequenceName = "award_seq",
+	                   allocationSize = 1) 
+	@Column(name="id")
+	private int id;
+	private String image_url;
+
+}

@@ -1,0 +1,9 @@
+package com.lamichhane.portfolio.entity;
+
+@Table(name="partners")
+public class Partners {
+	
+	private int id;
+	private String image_url;
+
+}

@@ -1,0 +1,13 @@
+package com.lamichhane.portfolio.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Table(name="partners")
+@Entity
+public class Partners {
+	
+	private int id;
+	private String image_url;
+
+}
