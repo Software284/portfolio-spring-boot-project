@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,9 +86,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/stats")
-	public Stats saveStats(@RequestBody Stats sts) {
+	public ResponseEntity<Stats> saveStats(@RequestBody Stats sts) {
 		statsService.saveStats(sts);
-		return sts;
+		return new ResponseEntity<>(sts,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/stats")
@@ -120,9 +122,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/knowldge_resume")
-	public KnowldgeResume saveKnowldgeResume(@RequestBody KnowldgeResume knowldgeresume) {
+	public ResponseEntity<KnowldgeResume> saveKnowldgeResume(@RequestBody KnowldgeResume knowldgeresume) {
 		knowldgeResumeService.saveKnowldgeResume(knowldgeresume);
-		return knowldgeresume;
+		return new ResponseEntity<>(knowldgeresume,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/knowldge_resume")
@@ -154,9 +156,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/contact_detail")
-	public ContactDetail saveContactDetail(@RequestBody ContactDetail contactdetail) {
+	public ResponseEntity<ContactDetail> saveContactDetail(@RequestBody ContactDetail contactdetail) {
 		contactDetailService.saveContactDetail(contactdetail);
-		return contactdetail;
+		return new ResponseEntity<>(contactdetail,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/contact_detail")
@@ -190,9 +192,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/skill_progressbar")
-	public SkillProgressBar saveSkillProgressBar(@RequestBody SkillProgressBar skillprogressbar) {
+	public ResponseEntity<SkillProgressBar> saveSkillProgressBar(@RequestBody SkillProgressBar skillprogressbar) {
 		skillProgressBarService.saveSkillProgressBar(skillprogressbar);
-		return skillprogressbar;
+		return new ResponseEntity<>(skillprogressbar,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/skill_progressbar")
@@ -224,9 +226,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/awards")
-	public Awards saveAwards(@RequestBody Awards awards) {
+	public ResponseEntity<Awards> saveAwards(@RequestBody Awards awards) {
 		awardsService.saveAwards(awards);
-		return awards;
+		return new ResponseEntity<>(awards,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/awards")
@@ -258,10 +260,10 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/blog_content")
-	public BlogContent saveBlogContent(@RequestBody BlogContent blogcontent) throws IOException {
+	public ResponseEntity<BlogContent> saveBlogContent(@RequestBody BlogContent blogcontent) throws IOException {
 		BlogContent content = blogContentService.saveBlogContent(blogcontent);
 
-		return blogcontent;
+		return new ResponseEntity<>(blogcontent,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/blog_content")
@@ -294,9 +296,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/testimonial")
-	public Testimonials saveTestimonials(@RequestBody Testimonials testimonials) throws IOException {
+	public ResponseEntity<Testimonials> saveTestimonials(@RequestBody Testimonials testimonials) throws IOException {
 		testimonialsService.saveTestimonials(testimonials);
-		return testimonials;
+		return new ResponseEntity<>(testimonials,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/testimonial")
@@ -328,9 +330,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/projects")
-	public Project saveProjects(@RequestBody Project projects) throws IOException {
+	public ResponseEntity<Project> saveProjects(@RequestBody Project projects) throws IOException {
 		projectsService.saveProjects(projects);
-		return projects;
+		return new ResponseEntity<>(projects,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/projects")
@@ -362,9 +364,9 @@ public class CustomerPanelController {
 	
 	
 	@PostMapping("/partners")
-	public Partners savePartners(@RequestBody Partners partners) throws IOException {
+	public ResponseEntity<Partners> savePartners(@RequestBody Partners partners) throws IOException {
 		partnersService.savePartners(partners);
-		return partners;
+		return new ResponseEntity<>(partners,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/partners")
